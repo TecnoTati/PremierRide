@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Aceptación de Términos</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #b30000;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .container {
+      background-color: #111;
+      padding: 40px 30px;
+      max-width: 600px;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+    }
+
+    h2 {
+      color: #bebebe;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: #ff7777;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .checkbox {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .checkbox input {
+      margin-right: 10px;
+    }
+
+    .boton {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .boton button {
+      padding: 12px 30px;
+      background-color: #b30000;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, opacity 0.3s;
+      opacity: 0.5;
+    }
+
+    .boton button.enabled {
+      opacity: 1;
+    }
+
+    .boton button:hover.enabled {
+      background-color: #e60000;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 class="sitename">Premier Ride</h1>
+  </header>
+
+  <div class="container">
+    <h2>Bienvenido al servicio de alquiler</h2>
+    <p>Para continuar, debe aceptar nuestros 
+      <a href="./assets/img/CONTRATO DE ARRENDAMIENTO CORTO PLAZO , SECURITY (1).pdf" target="_blank">términos y condiciones</a>.
+    </p>
+
+    <form action="./php/aceptar_terminos.php" method="POST">
+      <div class="checkbox">
+        <input type="checkbox" id="acepta">
+        <label for="acepta">He leído y acepto los términos y condiciones.</label>
+      </div>
+
+      <div class="boton">
+        <button type="submit" id="continuar" disabled>Continuar</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const checkbox = document.getElementById('acepta');
+    const continuarBtn = document.getElementById('continuar');
+
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        continuarBtn.classList.add('enabled');
+        continuarBtn.disabled = false;
+      } else {
+        continuarBtn.classList.remove('enabled');
+        continuarBtn.disabled = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
